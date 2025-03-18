@@ -4,7 +4,6 @@ import com.github.zxhtom.leetcode.d329.D329;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeMap;
 
 /**
  * TODO
@@ -12,9 +11,7 @@ import java.util.TreeMap;
  * @author zxhtom
  * 2025/3/17
  */
-public class D329Impl implements D329 {
-    int m ,n;
-    List[][] memoizations ;
+public class D329_2Impl implements D329 {
     List<int[]> directions = new ArrayList<int[]>() {
         {
             add(new int[]{-1, 0});
@@ -23,40 +20,39 @@ public class D329Impl implements D329 {
             add(new int[]{0, -1});
         }
     };
+    int[][] memoizations ;
+    int m , n;
     @Override
     public int longestIncreasingPath(int[][] matrix) {
         m = matrix.length;
         n = matrix[0].length;
-        memoizations = new ArrayList[m][n];
+        memoizations = new int[m][n];
         int max = 0;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                List<Integer> dfs = dfs(matrix, i, j);
-                if (max < dfs.size()) {
-                    max = dfs.size();
+                int dfs = dfs(matrix, i, j);
+                if (max < dfs) {
+                    max = dfs;
                 }
             }
         }
         return max;
     }
 
-    public List<Integer> dfs(int[][] matrix , int i, int j) {
-        if (memoizations[i][j] != null) {
-            return memoizations[i][j];
+    public int dfs(int[][] matrix, int startRow, int startCol) {
+        if (memoizations[startRow][startCol] > 0) {
+            return memoizations[startRow][startCol];
         }
         int max = 0;
-        List<Integer> tmps = new ArrayList<>();
         for (int[] direction : directions) {
-            int nextRow = i + direction[0], nextCol = j + direction[1];
+            int nextRow = startRow + direction[0], nextCol = startCol + direction[1];
             if (nextRow < 0 || nextRow >= m || nextCol < 0 || nextCol >= n) {
                 continue;
             }
-            if (matrix[i][j] < matrix[nextRow][nextCol] && max < dfs(matrix, nextRow, nextCol).size()) {
-                tmps=dfs(matrix, nextRow, nextCol);
-                max = tmps.size();
+            if (matrix[startRow][startCol] < matrix[nextRow][nextCol] && max < dfs(matrix, nextRow, nextCol)) {
+                max = dfs(matrix, nextRow, nextCol);
             }
         }
-        tmps.add(matrix[i][j]);
-        return tmps;
+        return memoizations[startRow][startCol] = max + 1;
     }
 }
