@@ -24,7 +24,10 @@ public class D142Test extends BaseTest {
             ListNode second = new ListNode(2);
             ListNode third = new ListNode(0);
             ListNode forth = new ListNode(-4);
-            first.next = second.next = second.next = forth;
+            first.next = second;
+            second.next = third;
+            third.next = forth;
+            forth.next = second;
             add(first);
         }
     };
@@ -35,7 +38,18 @@ public class D142Test extends BaseTest {
     };
     @Before
     public void initData() {
+        ListNode first = new ListNode(1);
+        ListNode second = new ListNode(2);
+        first.next = second;
+        second.next = first;
+        datas.add(first);
+        ans.add(0);
 
+        ListNode first1 = new ListNode(1);
+        ListNode second2 = new ListNode(2);
+        first1.next = second2;
+        datas.add(first1);
+        ans.add(-1);
     }
     @Test
     public void simpleTest() throws InstantiationException, IllegalAccessException {
@@ -46,6 +60,9 @@ public class D142Test extends BaseTest {
                 ListNode listNode = datas.get(i);
                 ListNode resNode = leetcode.detectCycle(listNode);
                 Integer pos = ans.get(i);
+                if (pos < 0) {
+                    listNode=null;
+                }
                 while (pos-- > 0) {
                     listNode = listNode.next;
                 }
