@@ -17,12 +17,24 @@ import java.util.List;
 public class BiggerIsGreaterTest {
     List<String> datas = new ArrayList<String>(){
         {
+            add("lchmvizvnkxaucmdbzsjtqlpda");
+            add("kwkjxiiwinkodswdemvnpsoexjzujupseacgqsbhqfdngxuhzpqmwcvioifinnkngphbtgrareb");
+            add("yricnue");
+            add("ibqckpqniuyo");
+            add("zedawdvyyfumwpupuinbdbfndyehircmylbaowuptgmw");
+            add("dkhc");
             add("abcd");
             add("ba");
         }
     };
     List<String> ans = new ArrayList<String>(){
         {
+            add("lchmvizvnkxaucmdbzsjtqpadl");
+            add("kwkjxiiwinkodswdemvnpsoexjzujupseacgqsbhqfdngxuhzpqmwcvioifinnkngphbtgrbaer");
+            add("yricuen");
+            add("ibqckpqniyou");
+            add("zedawdvyyfumwpupuinbdbfndyehircmylbaowuptgwm");
+            add("hcdk");
             add("abdc");
             add("no answer");
         }
