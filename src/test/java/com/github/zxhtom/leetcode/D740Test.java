@@ -19,12 +19,18 @@ import java.util.Set;
 public class D740Test extends BaseTest {
     List<int[]> datas = new ArrayList<int[]>() {
         {
+            add(new int[]{1, 1, 1, 2, 4, 5, 5, 5, 6});
+            add(new int[]{8, 10, 4, 9, 1, 3, 5, 9, 4, 10});
+            add(new int[]{3, 1});
             add(new int[]{3, 4, 2});
             add(new int[]{2, 2, 3, 3, 3, 4});
         }
     };
     List<Integer> ans = new ArrayList<Integer>() {
         {
+            add(18);
+            add(37);
+            add(4);
             add(6);
             add(9);
         }

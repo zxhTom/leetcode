@@ -8,7 +8,7 @@ import com.github.zxhtom.leetcode.d2266.D2266;
  * @author zxhtom
  * 2025/3/30
  */
-public class D2266_2Impl implements D2266 {
+public class D2266_Stand_Impl implements D2266 {
     private static final int MOD = 1_000_000_007;
     private static final int MX = 100_001;
     private static final long[] f = new long[MX];
