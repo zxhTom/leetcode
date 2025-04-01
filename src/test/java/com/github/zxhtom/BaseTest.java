@@ -1,9 +1,10 @@
 package com.github.zxhtom;
 
+import com.github.zxhtom.annotaions.Ignore;
 import org.reflections.Reflections;
 
-import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author zxhtom
@@ -17,6 +18,12 @@ public class BaseTest {
         return reflections;
     }
 
+    public <T> Set<Class<? extends T>> getSubTypesOf(Class<T> clazz) {
+        Set<Class<? extends T>> subTypesOf = this.reflections.getSubTypesOf(clazz);
+        return subTypesOf.stream().filter(item -> {
+            return !item.isAnnotationPresent(Ignore.class);
+        }).collect(Collectors.toSet());
+    }
     public void setReflections(Reflections reflections) {
         this.reflections = reflections;
     }
