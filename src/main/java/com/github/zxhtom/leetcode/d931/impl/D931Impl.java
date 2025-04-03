@@ -15,7 +15,7 @@ public class D931Impl implements D931 {
         dp[0] = matrix[0];
         for (int i = 1; i < row; i++) {
             dp[i][0] = Math.min(dp[i - 1][0], dp[i - 1][1])+matrix[i][0];
-            dp[i][cols - 1] = Math.min(dp[i - 1][0], dp[cols - 2][cols - 1]) + matrix[i][cols - 1];
+            dp[i][cols - 1] = Math.min(dp[i - 1][cols - 2], dp[i - 1][cols - 1]) + matrix[i][cols - 1];
             for (int j = 1; j < cols - 1; j++) {
                 dp[i][j] = Math.min(dp[i - 1][j - 1], Math.min(dp[i - 1][j], dp[i - 1][j + 1])) + matrix[i][j];
             }
