@@ -13,6 +13,7 @@ import java.util.List;
 public class D139Test extends BaseTest {
     List<String> datas = new ArrayList<String>(){
         {
+            add("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab");
             add("goalspecial");
             add("aaaaaaa");
             add("applepenapple");
@@ -21,6 +22,7 @@ public class D139Test extends BaseTest {
     };
     List<List<String>> datas2 = new ArrayList<List<String>>(){
         {
+            add(Arrays.asList(new String[]{"a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa"}));
             add(Arrays.asList(new String[]{"go","goal","goals","special"}));
             add(Arrays.asList(new String[]{"aaaa","aaa"}));
             add(Arrays.asList(new String[]{"apple", "pen"}));
@@ -30,6 +32,7 @@ public class D139Test extends BaseTest {
 
     List<Boolean> ans = new ArrayList<Boolean>(){
         {
+            add(false);
             add(true);
             add(true);
             add(true);

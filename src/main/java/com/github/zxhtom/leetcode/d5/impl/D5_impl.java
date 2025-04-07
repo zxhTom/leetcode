@@ -1,9 +1,11 @@
-package com.github.zxhtom.leetcode.d5;
+package com.github.zxhtom.leetcode.d5.impl;
+
+import com.github.zxhtom.leetcode.d5.D5;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class D5_impl implements D5{
+public class D5_impl implements D5 {
     @Override
     public String longestPalindrome(String s) {
         int len = s.length();
