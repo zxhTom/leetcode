@@ -6,11 +6,15 @@ import com.github.zxhtom.leetcode.d72.D72;
 import java.util.Arrays;
 
 /**
- * TODO
- *
+ * This Situation can't analysc repeat letter
+ * eg:
+ *     abcdet->c  need step 5 --> initial arr dp[i][0]={1,2,2,3,4,5}
+ *     abcdcet->c  need step 6 -> initial arr dp[i][0]={1,2,2,3,3,4,5} this is error where occur second c
+ * so the Unit One Result is 26 But Actually one is 27
  * @author zxhtom
  * 2025/4/5
  */
+@Ignore
 public class D72Impl implements D72 {
 
     int[][] dp;

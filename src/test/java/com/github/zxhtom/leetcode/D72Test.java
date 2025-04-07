@@ -18,7 +18,7 @@ import java.util.List;
 public class D72Test extends BaseTest {
     List<String[]> datas = new ArrayList<String[]>(){
         {
-//            add(new String[]{"pneumonoultramicroscopicsilicovolcanoconiosis", "ultramicroscopically"});
+            add(new String[]{"pneumonoultramicroscopicsilicovolcanoconiosis", "ultramicroscopically"});
             add(new String[]{"", ""});
             add(new String[]{"horse", "ros"});
             add(new String[]{"intention", "execution"});
@@ -43,8 +43,8 @@ public class D72Test extends BaseTest {
                 D72 leetcode = clazz.newInstance();
                 int res = leetcode.minDistance(datas.get(i)[0], datas.get(i)[1]);
                 System.out.println("i = " + i);
-//                Assert.assertTrue(res == ans.get(i));
-                System.out.println("res = " + res);
+                Assert.assertTrue(res == ans.get(i));
+//                System.out.println("res = " + res);
             }
         }
     }
