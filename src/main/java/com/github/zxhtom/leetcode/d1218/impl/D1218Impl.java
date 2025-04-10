@@ -3,6 +3,8 @@ package com.github.zxhtom.leetcode.d1218.impl;
 import com.github.zxhtom.leetcode.d1218.D1218;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class D1218Impl implements D1218 {
     @Override
@@ -10,20 +12,21 @@ public class D1218Impl implements D1218 {
         int m = arr.length;
 //        Arrays.sort(arr);
 //        difference = Math.abs(difference);
-        int[] dp = new int[m];
-        Arrays.fill(dp, 1);
-        int max = 1;
+        Map<Integer, Integer> map = new HashMap<>();
+        int[][] dp = new int[m][2];
+        dp[0][0] = 0;
+        dp[0][1] = 1;
+        map.put(arr[0], 0);
         for (int i = 1; i < m; i++) {
-            for (int j = i-1; j >= 0; j--) {
-                if (arr[i] - arr[j] == difference) {
-                    dp[i] = 1 + dp[j];
-                    if (max < dp[i]) {
-                        max = dp[i];
-                    }
-                    break;
-                }
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1]);
+            //initial use this node situation , the initial value is 1
+            dp[i][1] = 1;
+            int prev = arr[i] - difference;
+            if (map.containsKey(prev)) {
+                dp[i][1] = Math.max(dp[i][1], 1 + dp[map.get(prev)][1]);
             }
+            map.put(arr[i], i);
         }
-        return  max;
+        return Math.max(dp[m - 1][0], dp[m - 1][1]);
     }
 }
