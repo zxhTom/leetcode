@@ -6,11 +6,14 @@ public class D96Impl implements D96 {
     @Override
     public int numTrees(int n) {
         int[] dp = new int[n+1];
-        dp[0] = 0;
+        dp[0] = 1;
         dp[1] = 1;
-        for (int j = 2; j <= n; j++) {
-//            dp[j]=Double.valueOf(Math.pow(2,j)).intValue()+
+        for (int i = 2; i <= n; i++) {
+            for (int j = i; j > 0; j--) {
+                dp[i] += dp[j - 1] * dp[i - j];
+            }
         }
-        return 0;
+        return dp[n];
     }
+
 }
