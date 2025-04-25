@@ -12,16 +12,26 @@ public class D2140Impl implements D2140 {
     @Override
     public long mostPoints(int[][] questions) {
         int m = questions.length;
-        Integer max = 0;
-        int[][] dp = new int[m+1][2];
+        Long max = 0L;
+        long[] dp = new long[m];
         for (int i = 0; i < m; i++) {
-            if (dp[i - 1][1] == 1) {
-                dp[i][0] = Math.max(dp[i][0], dp[i - 1][0]);
-            } else {
-                dp[i][0] = dp[i - 1][0] + questions[i][0];
-                dp[i][1] = 1;
+            dp[i] = questions[i][0];
+            if (max < dp[i]) {
+                max = dp[i];
             }
         }
-        return 0;
+        for (int i = 0; i < m; i++) {
+            int next =i+1+questions[i][1];
+            if (next >= m) {
+                continue;
+            }
+            for (int j = next; j <= Math.min(next + questions[next][1], m-1); j++) {
+                dp[j] = Math.max(dp[j], dp[i] + questions[j][0]);
+                if (max < dp[j]) {
+                    max = dp[j];
+                }
+            }
+        }
+        return max;
     }
 }
