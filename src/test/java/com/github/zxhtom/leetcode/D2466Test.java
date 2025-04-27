@@ -12,7 +12,7 @@ import java.util.List;
 public class D2466Test extends BaseTest {
     List<int[]> datas = new ArrayList<int[]>(){
         {
-            add(new int[]{3, 2, 1, 1});
+            add(new int[]{3, 3, 1, 1});
             add(new int[]{2, 3, 1, 2});
         }
     };
